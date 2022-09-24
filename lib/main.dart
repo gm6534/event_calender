@@ -1,3 +1,4 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -5,7 +6,10 @@ import 'Pages/Home.dart';
 import 'Testing.dart';
 import 'Widgets/Meetings.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await AndroidAlarmManager.initialize();
   runApp(const MyApp());
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
@@ -30,8 +34,8 @@ class MyApp extends StatelessWidget {
       home:
       // MyHomePage()
       // CustomTooltip()
+      // MyStatefulWidget()
       HomePage(),
     );
   }
 }
-
