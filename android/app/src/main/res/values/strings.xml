@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EveCalendar</string>
+    <string name="facebook_app_id">847440263086814</string>
+    <string name="fb_login_protocol_scheme">fb847440263086814</string>
+    <string name="facebook_client_token">431c347724cd5363cede76794d34956d</string>
+</resources>

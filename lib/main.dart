@@ -1,15 +1,18 @@
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+// import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:event_calender/Pages/Splash.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'Pages/Home.dart';
 import 'Testing.dart';
+import 'Testing2.dart';
 import 'Widgets/Meetings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await AndroidAlarmManager.initialize();
+  await Firebase.initializeApp();
+  // await AndroidAlarmManager.initialize();
   runApp(const MyApp());
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
@@ -27,15 +30,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My Calendar',
+      title: 'EveCalendar',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home:
+      // Test()
+      // DemoApp()
+          SplashPage()
       // MyHomePage()
-      // CustomTooltip()
-      // MyStatefulWidget()
-      HomePage(),
+      // HomePage(),
     );
   }
 }

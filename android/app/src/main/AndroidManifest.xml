@@ -1,12 +1,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.event_calender">
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-   <application
-        android:label="My Calendar"
+<!--    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>-->
+<!--    <uses-permission android:name="android.permission.WAKE_LOCK"/>-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSEfl_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:label="EveCalendar"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <activity
+       <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+       <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+       <activity android:name="com.facebook.FacebookActivity"
+           android:configChanges=
+               "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+           android:label="@string/app_name" />
+       <activity
+           android:name="com.facebook.CustomTabActivity"
+           android:exported="true">
+           <intent-filter>
+               <action android:name="android.intent.action.VIEW" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <category android:name="android.intent.category.BROWSABLE" />
+               <data android:scheme="@string/fb_login_protocol_scheme" />
+           </intent-filter>
+       </activity>
+
+       <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
@@ -32,20 +53,20 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-       <service
-           android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"
-           android:permission="android.permission.BIND_JOB_SERVICE"
-           android:exported="false"/>
-       <receiver
-           android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"
-           android:exported="false"/>
-       <receiver
-           android:name="dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver"
-           android:enabled="false"
-           android:exported="false">
-           <intent-filter>
-               <action android:name="android.intent.action.BOOT_COMPLETED" />
-           </intent-filter>
-       </receiver>
+<!--       <service-->
+<!--           android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"-->
+<!--           android:permission="android.permission.BIND_JOB_SERVICE"-->
+<!--           android:exported="false"/>-->
+<!--       <receiver-->
+<!--           android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"-->
+<!--           android:exported="false"/>-->
+<!--       <receiver-->
+<!--           android:name="dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver"-->
+<!--           android:enabled="false"-->
+<!--           android:exported="false">-->
+<!--           <intent-filter>-->
+<!--               <action android:name="android.intent.action.BOOT_COMPLETED" />-->
+<!--           </intent-filter>-->
+<!--       </receiver>-->
     </application>
 </manifest>

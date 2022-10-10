@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466727456381",
+    "project_id": "eve-calendar-bedaa",
+    "storage_bucket": "eve-calendar-bedaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466727456381:android:9b361dc709363dbd9dab14",
+        "android_client_info": {
+          "package_name": "com.example.event_calender"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466727456381-v0926frpfuviaf1te7hrqg4rv4ias1tq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ1CSz8Zow9ZQ-q3pdOsHp1BcYtr-KUV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466727456381-v0926frpfuviaf1te7hrqg4rv4ias1tq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
