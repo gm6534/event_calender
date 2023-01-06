@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "466727456381",
-    "project_id": "eve-calendar-bedaa",
-    "storage_bucket": "eve-calendar-bedaa.appspot.com"
+    "project_number": "506154368589",
+    "project_id": "publish-app-evecalendar",
+    "storage_bucket": "publish-app-evecalendar.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:466727456381:android:9b361dc709363dbd9dab14",
+        "mobilesdk_app_id": "1:506154368589:android:8fa3760578ca02ef89a604",
         "android_client_info": {
-          "package_name": "com.example.event_calender"
+          "package_name": "com.gm.event_calender"
         }
       },
       "oauth_client": [
         {
-          "client_id": "466727456381-v0926frpfuviaf1te7hrqg4rv4ias1tq.apps.googleusercontent.com",
+          "client_id": "506154368589-ejarns7l4epn3vk0cl28ujts7brp0i2f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gm.event_calender",
+            "certificate_hash": "05159b6e60474b324439cf0e247ed740140eba7e"
+          }
+        },
+        {
+          "client_id": "506154368589-4lemk56rkk0vovdtamuqhru6qgmschjn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDZ1CSz8Zow9ZQ-q3pdOsHp1BcYtr-KUV8"
+          "current_key": "AIzaSyBvs6iDuycmvzqLmaXXBw7htOazhVBgEi4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "466727456381-v0926frpfuviaf1te7hrqg4rv4ias1tq.apps.googleusercontent.com",
+              "client_id": "506154368589-4lemk56rkk0vovdtamuqhru6qgmschjn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.event_calender">
+    package="com.gm.event_calender">
 <!--    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>-->
 <!--    <uses-permission android:name="android.permission.WAKE_LOCK"/>-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

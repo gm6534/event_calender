@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:event_calender/Pages/MainPage.dart';
 import 'package:event_calender/Testing.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,7 +18,6 @@ import 'SignupPage.dart';
 // User get user => _auth.currentUser!;
 Stream<User?> get authState => FirebaseAuth.instance.authStateChanges();
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -26,6 +27,13 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _auth=FirebaseAuth.instance;
+  String? token;
+  String? id;
+  String? email;
+  String? name;
+  // String first_name = facebookUserData['first_name'];
+  // String last_name = facebookUserData['last_name'];
+  String? profilePicture;
 
 @override
   void initState() {
@@ -109,8 +117,8 @@ class _LoginPageState extends State<LoginPage> {
                     child: SignInButton(
                       Buttons.facebook,
                       text: "Sign In with Facebook",
-                      onPressed: () async{
-                        await signInWithFacebook(context);
+                      onPressed: () {
+                        signInWithFacebook(context);
                       },
                     ),
                   ),
@@ -190,7 +198,15 @@ class _LoginPageState extends State<LoginPage> {
                     top: Radius.elliptical(
                         MediaQuery.of(context).size.width, 100.0)),
               ),
-              child: Center(child: Text("Team Deviate", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 15),)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  Text("By GM", style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize: 15),),
+                  Text("App Developer", style: TextStyle(color: Colors.white, fontSize: 12),),
+                  SizedBox(height: 20,)
+                ],
+              ),
             ),
           ],
         ),
@@ -219,7 +235,8 @@ Future<void> signInWithGoogle(BuildContext context) async {
           idToken: googleAuth?.idToken,
         );
         UserCredential userCredential =
-        await _auth.signInWithCredential(credential).whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage())));
+        await _auth.signInWithCredential(credential).whenComplete(() =>
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage())));
 
         // if you want to do specific task like storing information in firestore
         // only for new users using google sign in (since there are no two options
@@ -235,17 +252,109 @@ Future<void> signInWithGoogle(BuildContext context) async {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
   }
 }
-//Todo FACEBOOK SIGN IN
+//Todo FACEBOOK SIGN
+
+  // void facebookLogin() async {
+  //   // Trigger the sign-in flow
+  //   await FacebookAuth.instance.login(
+  //       permissions: ['email', 'public_profile']).then((facebookUser) async {
+  //     if (facebookUser != null) {
+  //       await FacebookAuth.instance.getUserData().then((facebookUserData) async {
+  //         if(facebookUser.accessToken != null){
+  //
+  //
+  //           String token = facebookUser.accessToken!.token;
+  //           String id = facebookUserData['id'];
+  //           String email = facebookUserData['email'];
+  //           String name = facebookUserData['name'];
+  //           // String first_name = facebookUserData['first_name'];
+  //           // String last_name = facebookUserData['last_name'];
+  //           String profilePicture = facebookUserData['picture']['data']['url'];
+  //
+  //
+  //           print("object");
+  //           print("dck  kmk kmkfmrkmkrmv\niemciemcecoem-----------------------");
+  //           print(token);
+  //           print(id);
+  //           print(name);
+  //           print(email);
+  //           // print(first_name);
+  //           // print(last_name);
+  //           print(profilePicture);
+  //
+  //         }
+  //         else {
+  //           throw PlatformException(
+  //               code: 'ERROR_MISSING_FACEBOOK_AUTH_TOKEN',
+  //               message: 'Missing Facebook Auth Token');
+  //         }
+  //       });
+  //
+  //
+  //     }
+  //     else {
+  //       throw PlatformException(
+  //           code: 'ERROR_ABORTED_BY_USER', message: 'Sign in aborted by user');
+  //     }
+  //   });
+  // }
+
+
+
   Future<void> signInWithFacebook(BuildContext context) async {
     try {
-      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final LoginResult loginResult = await FacebookAuth.instance.login(
+          permissions: ['email', 'public_profile']).then((facebookUser) async {
+        if (facebookUser != null) {
+          await FacebookAuth.instance.getUserData().then((facebookUserData) async {
+            if(facebookUser.accessToken != null){
+
+             setState(() {
+               token = facebookUser.accessToken!.token;
+               id = facebookUserData['id'];
+               email = facebookUserData['email'];
+               name = facebookUserData['name'];
+               // String first_name = facebookUserData['first_name'];
+               // String last_name = facebookUserData['last_name'];
+               profilePicture = facebookUserData['picture']['data']['url'];
+             });
+              // print("object");
+              print("dck  kmk kmkfmrkmkrmv\niemciemcecoem-----------------------");
+              // print(token);
+              // print(id);
+              // print(name);
+              // print(email);
+              // // print(first_name);
+              // // print(last_name);
+              print(profilePicture);
+
+            }
+            else {
+              throw PlatformException(
+                  code: 'ERROR_MISSING_FACEBOOK_AUTH_TOKEN',
+                  message: 'Missing Facebook Auth Token');
+            }
+          });
+        }
+        else {
+          throw PlatformException(
+              code: 'ERROR_ABORTED_BY_USER', message: 'Sign in aborted by user');
+        }
+        return facebookUser;
+      });
 
       final OAuthCredential facebookAuthCredential =
       FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
-
-      await _auth.signInWithCredential(facebookAuthCredential).whenComplete(() =>
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage()))
+      await _auth.signInWithCredential(facebookAuthCredential).whenComplete(()
+          {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage(
+              profilePicture1: profilePicture,
+              name1: name,
+              email1: email,
+            )));
+            setState(() {});
+          }
 
     );
     } on FirebaseAuthException catch (e) {

@@ -75,13 +75,15 @@ class _SplashPageState extends State<SplashPage> {
             ),
             CustomPaint(
               painter: BottomChevron(),
-              child: Container(
+              child: SizedBox(
                 height: 250,
                 width: double.infinity,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const Text("By Team Deviate", style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize: 15),),
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text("By GM", style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize: 15),),
+                    Text("App Developer", style: TextStyle(color: Colors.white, fontSize: 12),),
                     SizedBox(height: 20,)
                   ],
                 ),

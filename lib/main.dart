@@ -15,7 +15,7 @@ Future<void> main() async {
   // await AndroidAlarmManager.initialize();
   runApp(const MyApp());
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           systemNavigationBarColor: Colors.white,
           systemNavigationBarIconBrightness: Brightness.dark,

@@ -49,6 +49,8 @@ dependencies:
   timeline_tile: ^2.0.0
   share_plus: ^4.5.3
   flutter_facebook_auth: ^4.4.1+1
+  firebase_dynamic_links: ^4.3.11
+  get: ^4.6.5
 
 
 dev_dependencies:
